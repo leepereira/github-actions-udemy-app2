@@ -1,20 +1,9 @@
 name: Practice Project
-on: [push, pull_request]
+on: [issues]
 jobs:
-  lint-test-deploy:
+  githubinformation:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: npm ci    
-      - name: Lint
-        run: npm run lint
-      - name: Test
-        run: npm run test
-      - name: Build
-        run: npm run build
-      - name: Publish
-        run: npm publish
+      - name: Get github information
+        run: echo "${{ toJSON(github.event) }}"
 
