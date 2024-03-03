@@ -1,16 +1,16 @@
 name: Events Demo1
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types:
+      - opened
 
 jobs:
  deploy:
     runs-on: ubuntu-latest
     steps:
-    #  - name: output event data
-    #    run: echo "${{ toJson(github.events }}"
+     - name: output event data
+       run: echo "${{ toJSON(github.event }}"
      - name: get code
        uses: actions/checkout@v3
      - name: Install dependencies
